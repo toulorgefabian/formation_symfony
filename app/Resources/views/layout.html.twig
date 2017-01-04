@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Formation Symfony 3{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/formation.css') }}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+
+<div class="container">
+    {% block navbar %}
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Formation Symfony 3</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                    <a class="pull-right btn btn-info account"            href="#">Connexion</a>
+                </div>
+            </div>
+        </nav>
+
+    {% endblock %}
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <p class="bg-info">{{ flashMessage }}</p>
+    {% endfor %}
+
+    {% block main %}
+    {% endblock %}
+</div>
+
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.min.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+{% endblock %}
+</body>
+</html>
